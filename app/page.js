@@ -139,23 +139,62 @@ export default function LandingPage() {
   }
 
   return (
-    <div>
+    <div style={{ margin: 0, padding: 0, fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", color: "#0f172a" }}>
       <SEOHead meta={seo} />
-      <header>
-        <h1>{basePage.headline}</h1>
-        <p>{basePage.description}</p>
-        <button>{basePage.cta}</button>
+
+      <header style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", color: "#fff", padding: "5rem 2rem 6rem", textAlign: "center" }}>
+        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+          <div style={{ display: "inline-block", padding: "0.35rem 1rem", background: "rgba(99,102,241,0.2)", borderRadius: 999, fontSize: "0.75rem", color: "#a5b4fc", marginBottom: "1.5rem", fontWeight: 500 }}>Trusted by 2,000+ teams</div>
+          <h1 style={{ fontSize: "3rem", fontWeight: 800, margin: "0 0 1rem", lineHeight: 1.1, letterSpacing: "-0.03em" }}>{basePage.headline}</h1>
+          <p style={{ fontSize: "1.15rem", color: "#94a3b8", margin: "0 0 2rem", lineHeight: 1.6 }}>{basePage.description}</p>
+          <button style={{
+            padding: "0.85rem 2rem", background: "linear-gradient(135deg, #6366f1, #8b5cf6)", color: "#fff",
+            border: "none", borderRadius: 10, fontSize: "1rem", fontWeight: 700, cursor: "pointer",
+            boxShadow: "0 4px 16px rgba(99,102,241,0.4)",
+          }}>{basePage.cta}</button>
+          <div style={{ marginTop: "1.5rem", fontSize: "0.8rem", color: "#64748b" }}>No credit card required &middot; Free 14-day trial</div>
+        </div>
       </header>
-      <section>
-        <h2>Features</h2>
-        <ul>{basePage.features.map((f, i) => <li key={i}>{f}</li>)}</ul>
+
+      <section style={{ padding: "5rem 2rem", maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+        <h2 style={{ fontSize: "2rem", fontWeight: 800, margin: "0 0 0.5rem", letterSpacing: "-0.02em" }}>Everything you need to ship</h2>
+        <p style={{ color: "#64748b", margin: "0 0 3rem" }}>Stop stitching together 10 different tools. One kit, everything included.</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.5rem", textAlign: "left" }}>
+          {basePage.features.map((f, i) => (
+            <div key={i} style={{ padding: "1.5rem", background: "#f8fafc", borderRadius: 12, border: "1px solid #e2e8f0" }}>
+              <div style={{ width: 36, height: 36, borderRadius: 8, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "0.75rem", fontSize: "1.1rem" }}>
+                {["📊", "🤝", "🔒", "⚡"][i]}
+              </div>
+              <div style={{ fontWeight: 700, fontSize: "1rem", marginBottom: "0.35rem" }}>{f}</div>
+              <div style={{ fontSize: "0.85rem", color: "#64748b", lineHeight: 1.5 }}>
+                {["Track metrics and trends with AI-powered insights.", "Work together in real-time with automatic sync.", "SOC 2 compliant with end-to-end encryption.", "Guaranteed uptime with automatic failover."][i]}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
-      <PricingCalculator plans={FEATURES} addons={ADDONS} pricing={pricing} />
-      <ABTestVariant variants={{ control: basePage, A: variantA, B: variantB }} />
-      <ConversionTracker events={conversionEvents} topElements={topElements} />
-      <footer>
-        <p>{seo.title}</p>
-        <p>{seo.description}</p>
+
+      <section style={{ padding: "5rem 2rem", background: "#f8fafc" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <h2 style={{ fontSize: "2rem", fontWeight: 800, margin: "0 0 0.5rem", letterSpacing: "-0.02em" }}>Simple, transparent pricing</h2>
+            <p style={{ color: "#64748b", margin: 0 }}>Start free. Scale as you grow.</p>
+          </div>
+          <PricingCalculator plans={FEATURES} addons={ADDONS} pricing={pricing} />
+        </div>
+      </section>
+
+      <section style={{ padding: "5rem 2rem", maxWidth: 900, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <h2 style={{ fontSize: "2rem", fontWeight: 800, margin: "0 0 0.5rem", letterSpacing: "-0.02em" }}>A/B Test Your Landing Pages</h2>
+          <p style={{ color: "#64748b", margin: 0 }}>Built-in variant testing and conversion tracking. No extra tools needed.</p>
+        </div>
+        <ABTestVariant variants={{ control: basePage, A: variantA, B: variantB }} />
+      </section>
+
+      <footer style={{ padding: "3rem 2rem", background: "#0f172a", color: "#94a3b8", textAlign: "center", fontSize: "0.85rem" }}>
+        <div style={{ fontWeight: 700, color: "#fff", fontSize: "1rem", marginBottom: "0.5rem" }}>AI SaaS Kit</div>
+        <p style={{ margin: 0 }}>{seo.description}</p>
       </footer>
     </div>
   );
